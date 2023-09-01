@@ -13,7 +13,7 @@ function Filter() {
   }
   let dataSearch = MovieData.filter(item =>{
    return Object.keys(item).some(key=>
-    item[key].toString().toLowerCase).includes(filter)
+    item[key].toString().toLowerCase().includes(filter.toString().toLowerCase()))
 });
   return (
     <div>
