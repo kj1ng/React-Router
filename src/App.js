@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css';
-import MovieCard from './components/MovieCard';
+import MovieList from './components/MovieList';
 
 
 function App() {
   return (
     <div className="App">
 <h1 className = "text-center text-info"> Movie App </h1>
-<MovieCard />
+<MovieList />
     </div>
   );
 }
