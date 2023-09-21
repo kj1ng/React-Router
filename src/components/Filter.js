@@ -2,38 +2,36 @@ import React from 'react'
 // import MovieCard from './MovieCard'
 import Form from 'react-bootstrap/Form';
 import {useState} from 'react'
+import {MovieData} from '../MovieData'
+import MovieList from './MovieList';
+
 // import {MovieData} from '../MovieData'
 
 function Filter() {
 
-  // const [filter, setFilter] = useState("")
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState(MovieData);
 
-  // const searchText = (event) =>{
-  //   setFilter(event.target.value);
-  // }
-//   let dataSearch = MovieData.filter(item =>{
-//    return Object.keys(item).some(key=>
-//     item[key].toString().toLowerCase().includes(filter.toString().toLowerCase()))
-// });
+  const handleSearchChange = (event) => {
+    const newSearchTerm = event.target.value;
+    setSearchTerm(newSearchTerm);
 
-const [filter, setFilter] = useState('');
+    const filteredMovies = MovieData.filter((movie) =>
+      movie.title.toLowerCase().includes(newSearchTerm.toLowerCase())
+    );
 
-const handleFilterChange = (e) => {
-  setFilter(e.target.value);
-};
+    setFilteredMovies(filteredMovies);
+  };
 
-// const filterCards = () => {
-//   return MovieData.filter((card) =>
-//     card.title.toLowerCase().includes(filter.toLowerCase())
-//   );
-// };
+
+
   return (
     <div>
 
 <Form>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label><h4>Search</h4></Form.Label>
-        <Form.Control type="text" placeholder="Search for a movie" value={filter} onChange={{handleFilterChange}}/>
+        <Form.Control type="text" placeholder="Search for a movie" value={searchTerm} onChange={handleSearchChange}/>
       </Form.Group>
     </Form>
     {/* {
@@ -42,6 +40,7 @@ const handleFilterChange = (e) => {
         <MovieCard {...card} />
        ) })
     } */}
+    <MovieList movies={filteredMovies} />
     </div>
   );
 }

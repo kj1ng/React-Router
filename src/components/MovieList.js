@@ -25,6 +25,7 @@ function MovieList() {
   MovieData.map((movie)=>{
     return(
       <MovieCard {...movie}/>
+    
     )
   })
 }   </Col>

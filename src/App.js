@@ -2,6 +2,7 @@ import React from 'react'
 import {Routes, Route, Link} from 'react-router-dom';
 import './App.css';
 import MovieList from './components/MovieList';
+import Filter from './components/Filter';
 import {MovieData} from './MovieData'
 import Description from './components/Description';
 
@@ -23,7 +24,7 @@ function App() {
   </Routes>
 
 <h1 className = "text-center text-info"> Movie App </h1>
-
+<Filter />
 
     </div>
   );
